@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="orb-js">
+<head><!-- Archived: 2020-01-20T09:56:20.836Z -->
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <link type="text/css" rel="stylesheet"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/core.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/compact.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/tablet.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/wide.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/old-ie.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/stylesheets/services/afaanoromoo/desktop.css">
+    <script src="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/js/vendor/jquery-1/jquery.min.js"></script>
+</head>
+<body class="afaanoromoo">
+<div>
+    <div id="live-scores-wc2018" class="live-scores live-scores__front-page">
+        <div class="header"><h3 class="header__subtitle">15 Adooleessa 2018</h3><a class="live-scores__refresh"
+                                                                                   href="/afaanoromoo/world-cup-2018/include/live-scores"><span
+                class="off-screen">Refresh scores</span><span class="live-scores__refresh--icon"></span></a></div>
+        <div class="live-scores__group"><h4 class="group__title">Xumura</h4>
+            <div class="fixture ">
+                <div>
+                    <div class="fixture__wrapper fixture__wrapper--home"><abbr title="Faransaayi"
+                                                                               class="fixture__team fixture__team--abbreviation">FRA</abbr><span
+                            class="fixture__team fixture__team--full fixture__team--home fixture__team--FRA">Faransaayi</span><span
+                            class="fixture__score">4</span></div>
+                    <div class="fixture__wrapper fixture__wrapper--away"><span class="fixture__score">2</span><span
+                            class="fixture__team fixture__team--full fixture__team--away fixture__team--CRO">Kirooshiyaa</span><abbr
+                            title="Kirooshiyaa" class="fixture__team fixture__team--abbreviation">CRO</abbr></div>
+                </div>
+                <div class="fixture__status"><span class="fixture__status--full">SG</span></div>
+            </div>
+            <div class="fixture--break"></div>
+        </div>
+        <div class="live-scores__sub"><p class="more"><a class="more__link right-arrow"
+                                                         href="/afaanoromoo/world-cup-2018">Xabaafi Qabxiiwwan</a></p>
+        </div>
+    </div><!-- /live-scores --></div>
+</body>
+<!--[if lte IE 8]>
+<script src="http://localhost:8080/static/static.bbc.co.uk/news/1.307.03520/js/vendor/legacy-ie-polyfills.js"></script>
+<![endif]-->
+<script>
+    var tModule = function ($) {
+        var t = {
+            init: function () {
+                this.setHeight(), this.startWatching(), window.postMessage ? this.setupPostMessage() : this.setupIframeBridge()
+            },
+
+            height: 0,
+
+            setupPostMessage: function () {
+                var e = this,
+                    t = window.location.pathname;
+                window.setInterval(function () {
+                    var n = {
+                        height: e.height,
+                        hostPageCallback: e.hostPageCallback
+                    };
+                    window.parent.postMessage(t + "::" + JSON.stringify(n), "*")
+                }, 32);
+            },
+
+            setupIframeBridge: function () {
+                var e = this;
+                window.setInterval(function () {
+                    window.iframeBridge = {
+                        height: e.height,
+                        hostPageCallback: e.hostPageCallback
+                    }
+                }, 32)
+            },
+
+            startWatching: function () {
+                var e = this;
+                var setHeight = function () {
+                    e.setHeight.call(e);
+                }
+                window.addEventListener("resize", setHeight, !1), window.setInterval(setHeight, 32)
+            },
+
+            newHeight: null,
+
+            getScrollHeight: function () {
+                if (navigator.userAgent.match(/chrome|safari/i)) {
+                    return document.documentElement.scrollHeight;
+                } else if ($("body").length > 0) {
+                    return $("body")[0].scrollHeight;
+                }
+            },
+
+            setHeight: function () {
+
+                var t = [this.newHeight || 0];
+                this.newHeight = null, t.push(this.getScrollHeight()), this.height = Math.max.apply(Math, t)
+            },
+
+            hostPageCallback: !1,
+
+            setHostPageInitialization: function ($) {
+                this.hostPageCallback = $.toString()
+            }
+        };
+
+        t.init();
+    }
+
+    if (typeof require === 'function') {
+        require(['jquery'], tModule);
+    } else {
+        tModule($);
+    }
+</script>
+</html>
