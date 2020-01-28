@@ -10,6 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "npm run test-coverage",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage"
   }
 }
 
