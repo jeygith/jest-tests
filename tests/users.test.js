@@ -11,4 +11,4 @@ it('should fetch users', () => {
     // axios.get.mockImplementation(() => Promise.resolve(resp))
 
     return Users.all().then(data => expect(data).toEqual(users));
-})
+});
