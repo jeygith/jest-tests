@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "jest-worker": "^25.1.0",
     "watch-gh-repos": "0.0.0"
   }
 }
