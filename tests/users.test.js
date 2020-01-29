@@ -12,3 +12,15 @@ it('should fetch users', () => {
 
     return Users.all().then(data => expect(data).toEqual(users));
 });
+
+it('should run multiple implementations of the mocked function', () => {
+    const myMockFn = jest
+        .fn(() => 'default')
+        .mockImplementationOnce(() => 'first call')
+        .mockImplementationOnce(() => 'second call')
+
+    expect(myMockFn()).toBe('first call');
+    expect(myMockFn()).toBe('second call');
+    expect(myMockFn()).toBe('default');
+    expect(myMockFn()).toBe('default');
+});
